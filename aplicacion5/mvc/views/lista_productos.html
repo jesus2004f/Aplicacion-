@@ -1,0 +1,42 @@
+$def with(productos)
+<div class="container mt-5">
+    <form class="row g-3" method="POST" action="">
+        
+        <div class="col">
+            <a href="/insertar" class="btn btn-warning float-right">Insertar</a>
+          </div>
+        <div class="col-auto">
+            <label for="nombre" class="visually-hidden">Buscar producto</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Busca un producto" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-info">Buscar</button>
+        </div>
+    </form>
+
+    <table class="table table-info table-hover mt-4">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Existencias</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            $for campo in productos:
+            <tr>
+                <th scope="row">$campo['nombre']</th>
+                <td>$campo['descripción']</td>
+                <td>$campo['precio']</td>
+                <td>$campo['existencias']</td>
+                <td>
+                    <a href="/detalle/$campo['id_productos']" class="btn btn-primary">Detalles</a>
+                    <a href="/actualizar/$campo['id_productos']" class="btn btn-success">Actualizar</a>
+                    <a href="/borrar/$campo['id_productos']" class="btn btn-danger">Borrar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
